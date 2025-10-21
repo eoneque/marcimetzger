@@ -64,7 +64,7 @@ body {
     height: 100vh; 
     
     /* Background Image setup */
-    background-image: url('images/mountainrange.png'); /* REPLACE with your image path */
+    background-image: url('/assests/images/hero-imgs/mountainrange.png'); /* REPLACE with your image path */
     background-size: cover;
     background-position: center bottom; /* Focus on the bottom/landscape area */
     background-repeat: no-repeat;
@@ -474,7 +474,7 @@ body {
     top: 0;
     left: 0;
     
-    background-image: url('images/pahrump.png'); /* Initial image */
+    background-image: url('/assests/images/photogallery-imgs/pahrump.png'); /* Initial image */
     background-size: cover;
     background-position: center center;
     
@@ -743,7 +743,7 @@ input[type="number"] {
 .cta-background-content {
     flex: 1; /* Takes up the remaining space */
     position: relative;
-    background-image: url('images/pahrump2.png'); /* The background image */
+    background-image: url('/assests/images/photogallery-imgs/pahrump2.png'); /* The background image */
     background-size: cover;
     background-position: center bottom;
     display: flex;
@@ -1007,8 +1007,8 @@ input[type="number"] {
 }
 
 .office-hours-title {
-    font-family: var(--font-inter), sans-serif;
-    font-size: 18px;
+    font-family: var(--font-cinzel), sans-serif;
+    font-size: 16px;
     font-weight: 600;
     margin-bottom: 5px;
     color: #1e1e1e;

@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let carouselInterval;
 
     const backgroundImages = [
-        'images/realestate1.png', 
-        'images/realestate2.png', 
-        'images/realestate3.png'  
+        'assests/images/agents-stats-imgs/realestate1.png', 
+        'assests/images/agents-stats-imgs/realestate2.png', 
+        'assests/images/agents-stats-imgs/realestate3.png'  
     ];
 
     if (slides.length > 0 && statsColumn && backgroundImages.length === slides.length) {
