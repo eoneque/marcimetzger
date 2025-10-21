@@ -1,0 +1,976 @@
+/* Importing the specified fonts for use */
+:root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-radio-canada: 'Radio Canada', sans-serif;
+    --font-source-sans: 'Source Sans 3', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-microsoft: 'Microsoft Sans Serif', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Use a standard font for general text */
+    font-family: var(--font-radio-canada), Arial, sans-serif;
+    color: white; /* Default text color is white for the hero section */
+}
+
+/* -------------------- Header Styling -------------------- */
+.header {
+    position: absolute; /* Position the header over the hero image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; /* Center the logo by default */
+    align-items: center;
+    z-index: 10; /* Ensure header is on top */
+    min-height: 50px; /* Give the blue bar some height */
+}
+
+.menu-icon {
+    position: absolute;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    line-height: 1; /* Aligns the unicode character vertically */
+}
+
+.logo-img {
+    /* Assuming the logo is an image with the "Homes" script text */
+    max-width: 300px; /* Adjust as needed for size */
+    height: auto;
+    filter: brightness(0) invert(1); /* Makes the logo image white if it's black on transparent */
+}
+
+/* Style for the "Marci Metzger Homes" text style if it wasn't an image */
+/* .logo-text {
+    font-family: var(--font-cinzel), serif;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+} */
+
+
+/* -------------------- Hero Section Styling -------------------- */
+.hero-section {
+    width: 100%;
+    /* Set a height that takes up the viewport */
+    height: 100vh; 
+    
+    /* Background Image setup */
+    background-image: url('images/mountainrange.png'); /* REPLACE with your image path */
+    background-size: cover;
+    background-position: center bottom; /* Focus on the bottom/landscape area */
+    background-repeat: no-repeat;
+    
+    /* Overlay to darken image slightly if needed, not explicitly shown but good practice */
+    /* background-color: rgba(0, 0, 0, 0.2); 
+    background-blend-mode: multiply; */
+    
+    /* Center content horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px; /* Account for the fixed header */
+}
+
+.hero-content {
+    /* Centers the text content vertically and horizontally within the hero section */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Adds readability to white text over image */
+}
+
+.hero-subheading {
+    /* Small, all-caps text above the main title */
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.hero-title {
+    /* The main, bold title */
+    font-family: var(--font-cinzel), serif; /* Using Cinzel for a distinguished look */
+    font-size: 4vw; /* Responsive font size */
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 7vw;
+    }
+}
+
+/* -------------------- Call to Action Button Styling -------------------- */
+.cta-button {
+    /* White background button with a thin black border */
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 30px;
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 20px; /* Slight rounded corners */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.agent-stats-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+    width: 100%;
+    min-height: 80vh;
+}
+
+/* -------------------- Left Column: Stats and Image -------------------- */
+.stats-column {
+    flex: 1 1 65%; /* Takes up about 65% of the width on large screens */
+    background-color: #000; /* Fallback */
+    position: relative;
+    color: white;
+    /* Background Image setup */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/realestate1.png'); /* REPLACE with your kitchen image path */
+    background-size: cover;
+    background-position: center;
+    
+    /* Ensure a minimum height for the column */
+    min-height: 500px;
+}
+
+.stats-content {
+    /* Position the content block near the bottom-left, as seen in the image */
+    position: absolute;
+    bottom: 5%;
+    left: 8%;
+    width: 80%;
+    max-width: 600px; /* Constrain the text block width */
+    padding: 20px;
+}
+
+.gold-separator {
+    width: 100%;
+    height: 3px;
+    /* Use a gold/yellow color for the separator line */
+    background: linear-gradient(to right, #d4af37, #d4af37 50%, transparent 50%);
+    margin-bottom: 25px;
+}
+
+.stats-headline {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 2.2vw; /* Responsive font size */
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.stats-text {
+    font-family: var(--font-source-sans), sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.active-dot {
+    background-color: #d4af37; /* Gold color for the active dot */
+}
+
+/* -------------------- Right Column: Agent Info -------------------- */
+.agent-column {
+    flex: 1 1 35%; /* Takes up about 35% of the width on large screens */
+    background-color: #151515; /* Dark background color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    padding: 50px 20px;
+}
+
+.agent-info {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.agent-name,
+.agent-phone {
+    /* Ensures color is pure white, just in case */
+    color: white;
+    text-align: left;
+}
+
+.agent-name {
+    font-family: var(--font-cinzel), serif; /* Use the logo font for the name */
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.agent-phone {
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.agent-photo-container {
+    /* Container to hold and style the image and its border/shadow */
+    max-width: 350px;
+    width: 80%;
+    aspect-ratio: 1 / 1; /* Makes the container square */
+    border-radius: 20px;
+    border: none;
+    padding: 10px; /* Padding creates the gray margin inside the container */
+    box-sizing: content-box; /* Ensure padding/border don't affect width calculation */
+}
+
+.agent-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    display: block;
+}
+
+/* -------------------- Responsive Adjustments -------------------- */
+@media (max-width: 1024px) {
+    .stats-headline {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .agent-stats-section {
+        flex-direction: column; /* Stack columns vertically on mobile */
+    }
+
+    .stats-column, .agent-column {
+        flex-basis: 100%;
+        min-height: 400px;
+    }
+
+    .stats-content {
+        position: static; /* Let content flow normally */
+        width: 100%;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+
+    .agent-column {
+        padding: 40px 20px;
+    }
+}
+
+/* -------------------- Services Section Styling -------------------- */
+.services-section {
+    background-color: #202020; /* Dark background color (same as agent-column) */
+    padding: 80px 50px;
+    text-align: center;
+    color: white;
+}
+
+.section-title {
+    font-family: var(--font-cinzel), serif; /* Using Cinzel for a formal, classic title */
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+}
+
+.services-container {
+    display: flex;
+    max-width: 1200px; /* Constrain the content width */
+    margin: 0 auto;
+    align-items: center; /* Vertically align image and text content */
+    text-align: left;
+    gap: 50px; /* Spacing between the image and the text list */
+}
+
+/* -------------------- Left Column: Image -------------------- */
+.services-image-column {
+    flex: 1 1 50%; /* Takes up roughly half the container width */
+    max-width: 50%;
+}
+
+.services-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Optional: Add a subtle border or shadow if needed, though the image seems to be borderless */
+    /* border-radius: 5px; */
+}
+
+/* -------------------- Right Column: Services List -------------------- */
+.services-list-column {
+    flex: 1 1 50%; /* Takes up roughly half the container width */
+    max-width: 50%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.service-item {
+    margin-bottom: 35px; /* Spacing between service blocks */
+}
+
+.service-title {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.service-description {
+    font-family: var(--font-source-sans), sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ccc; /* Slightly lighter text for readability */
+}
+
+/* -------------------- Responsive Adjustments -------------------- */
+@media (max-width: 900px) {
+    .services-section {
+        padding: 60px 20px;
+    }
+
+    .services-container {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        gap: 30px;
+    }
+
+    .services-image-column, 
+    .services-list-column {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .section-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .service-title {
+        font-size: 22px;
+    }
+}
+
+.gallery-section {
+    background-color: white; /* Light background */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.gallery-title {
+    /* Use the same elegant style as the 'OUR SERVICES' title */
+    font-family: var(--font-cinzel), serif; 
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: #1e1e1e; /* Dark text on light background */
+    margin-bottom: 50px;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Spacing between images */
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.gallery-item {
+    flex: 1 1 300px; /* Allows each item to grow/shrink, with a minimum width of 300px */
+    max-width: calc(33.333% - 20px); /* Ensures 3 items per row with spacing */
+    
+    /* Styles for the card look */
+    background-color: white;
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Ensures image respects the border-radius */
+    
+    /* Subtle border and shadow to lift the card */
+    border: 1px solid #eee; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    
+    /* Set an aspect ratio if you want consistent card height, or let the image define it */
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    /* Ensures the image fills the space and maintains aspect ratio */
+    object-fit: cover; 
+    display: block;
+}
+
+/* -------------------- Responsive Adjustments -------------------- */
+@media (max-width: 1024px) {
+    .gallery-container {
+        gap: 20px;
+    }
+    
+    .gallery-item {
+        max-width: calc(50% - 10px); /* 2 images per row on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-section {
+        padding: 50px 10px;
+    }
+
+    .gallery-item {
+        max-width: 100%; /* 1 image per row on phones */
+    }
+    
+    .gallery-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+}
+
+/* -------------------- Search/CTA Section Styling (REDONE) -------------------- */
+.search-cta-section {
+    width: 100%;
+    min-height: 100vh; /* Make it take up a good portion of the viewport height */
+    display: flex; /* Use flexbox for the two columns */
+    color: white; /* Default text color for the right side */
+}
+
+/* -------------------- Left Column: Search Sidebar -------------------- */
+.search-sidebar {
+    flex: 0 0 600px; /* Fixed width for the sidebar, won't grow/shrink */
+    background-color: #004d99; /* A strong blue, matching the image */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    font-family: var(--font-cinzel), serif; /* Matches the previous search title style */
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: white; /* Ensure title is white */
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px; /* Increased margin between rows */
+    width: 100%;
+}
+
+.form-group {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #e0e0e0; /* Slightly off-white label color */
+}
+
+.form-group input, 
+.form-group select {
+    /* DEFAULT STATE: No borders except for the custom bottom one */
+    border: none;
+    border-bottom: 1px solid #77aadd;
+    border-radius: 0; /* Ensure no rounded corners in the default state */
+    padding: 10px 0; /* Adjust padding for the bottom-border look */
+    
+    font-size: 16px;
+    height: 40px;
+    box-sizing: border-box;
+    background-color: transparent; /* Make background fully transparent */
+    color: white;
+    
+    transition: border 0.3s, background-color 0.3s, padding 0.3s; /* Add transitions */
+
+    /* Custom select arrow styling remains */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px auto;
+}
+
+/* NEW RULE: Style the options within the dropdown list to be dark text */
+.form-group select option {
+    /* When the dropdown is open, the background is usually white (browser default),
+       so we must explicitly set the text color to black/dark for readability. */
+    color: #000000; 
+    /* Optional: ensures options have a white background, useful for some browsers */
+    background-color: white; 
+    padding-left: 10px;
+}
+
+/* Remove spin buttons for number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Specific sizing for the Bedrooms and Baths fields */
+.form-row .full-width {
+    flex: 2 2 50%; /* Give it more space */
+}
+.form-row .small-group {
+    flex: 1 1 25%; /* Smaller fields */
+}
+
+/* Adjustments for the Price row inputs */
+.price-row .form-group input {
+    /* Use transparent background to inherit from the main rule, or set it here */
+    background-color: transparent; 
+    
+    /* The main .form-group input rule handles border:none and border-bottom.
+       We only need to keep the unique padding-left: 12px */
+    padding-left: 12px; 
+
+    /* Force the background-image to none for input fields in case of conflicts */
+    background-image: none; 
+}
+
+/* GLOBAL FOCUS STATE for all inputs and selects in the form */
+.form-group input:focus,
+.form-group select:focus {
+    /* FOCUS STATE: Show all four borders, background, and padding */
+    border: 1px solid #77aadd; /* Restore all four borders */
+    border-radius: 4px; /* Restore rounded corners */
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter background on focus */
+    padding: 10px 12px; /* Restore horizontal padding */
+}
+
+.search-button {
+    /* Updated button style for the blue sidebar */
+    background-color: #6699ff; /* A lighter blue for the button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 30px; /* Pill shape */
+    cursor: pointer;
+    align-self: center; /* Center the button */
+    width: 80%; /* Make it less wide to match image */
+    margin-top: 30px; /* Space from the inputs */
+    height: 50px; /* Taller button */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #5085e0;
+}
+
+/* -------------------- Right Column: Background Content -------------------- */
+.cta-background-content {
+    flex: 1; /* Takes up the remaining space */
+    position: relative;
+    background-image: url('images/pahrump2.png'); /* The background image */
+    background-size: cover;
+    background-position: center bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push headline to top, badges to bottom */
+    padding: 50px; /* Padding inside the right column */
+    
+    /* Optional: Add a subtle overlay to ensure text readability */
+    /* &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%);
+        z-index: 1;
+    } */
+}
+
+.cta-headline {
+    font-family: var(--font-cinzel), serif;
+    font-size: 36px; /* Larger headline */
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Stronger shadow for readability */
+    text-align: right; /* Align headline to the right */
+    position: static; /* No longer absolutely positioned */
+    z-index: 2;
+}
+
+/* -------------------- Top Badges (Now Bottom Right) -------------------- */
+.top-badges {
+    position: static; /* No longer absolutely positioned */
+    display: flex;
+    flex-wrap: wrap; /* Allow badges to wrap */
+    justify-content: flex-end; /* Align badges to the bottom right */
+    gap: 15px;
+    z-index: 2;
+    margin-top: auto; /* Pushes badges to the bottom when using flex-direction: column and justify-content: space-between */
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90px;
+}
+
+.badge-icon {
+    width: 100%;
+    height: auto;
+    max-width: 55px;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+}
+
+.badge-text {
+    font-size: 10px;
+    line-height: 1.3;
+    margin-top: 5px;
+}
+
+
+/* -------------------- Responsive Adjustments -------------------- */
+@media (max-width: 992px) {
+    .search-cta-section {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+
+    .search-sidebar {
+        flex: 1 1 100%; /* Take full width */
+        width: 100%;
+        min-height: auto;
+        padding: 40px 20px;
+    }
+
+    .cta-background-content {
+        flex: 1 1 100%;
+        min-height: 400px; /* Ensure image section has enough height */
+        padding: 40px 20px;
+    }
+
+    .cta-headline {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 30px; /* Add margin when stacked */
+    }
+
+    .top-badges {
+        justify-content: center; /* Center badges when stacked */
+        margin-top: 30px; /* Add some space from content above */
+    }
+
+    .form-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .form-group {
+        flex: 1 1 100%;
+    }
+    
+    .form-row .full-width,
+    .form-row .small-group {
+         flex: 1 1 45%; /* Allow 2 columns for smaller inputs on mobile too if space */
+    }
+    
+    .search-button {
+        width: 60%; /* Adjust button width */
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+     .form-row .small-group,
+     .form-row .full-width,
+     .price-row .form-group {
+        flex: 1 1 100%; /* Force all form items to stack */
+     }
+     .search-button {
+        width: 100%;
+     }
+}
+
+/* -------------------- Contact Section Styling -------------------- */
+.contact-section {
+    background-color: white; /* Clean white background */
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.contact-title {
+    font-family: var(--font-cinzel), serif; 
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: #1e1e1e;
+    margin-bottom: 50px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px; /* A little wider than previous sections */
+    margin: 0 auto;
+    text-align: left;
+    gap: 60px;
+}
+
+/* -------------------- Left Column: Form Styles -------------------- */
+.contact-form-column {
+    flex: 1 1 50%;
+    padding-right: 40px; /* Separator spacing */
+    border-right: 1px solid #ccc; /* Subtle vertical line divider */
+}
+
+.form-heading {
+    font-family: var(--font-cinzel), serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    color: #1e1e1e;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-group {
+    margin-bottom: 25px;
+}
+
+.contact-label {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e1e1e;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333; /* Darker bottom line */
+    padding: 10px 0;
+    font-size: 16px;
+    background: transparent;
+    color: #333;
+    /* Remove default focus outline and make border reappear */
+    transition: border-bottom 0.3s;
+}
+
+.contact-input:focus {
+    outline: none;
+    border-bottom: 2px solid #004d99; /* Blue focus highlight */
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+/* Search Button (Gray) */
+.contact-search-button {
+    background-color: #d3d3d3;
+    color: #333;
+    border: none;
+    padding: 15px 30px;
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 0 0 auto; /* Only take necessary width */
+    transition: background-color 0.3s;
+}
+
+/* WhatsApp Button (Green) */
+.whatsapp-button {
+    background-color: #55c855; /* WhatsApp green */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-family: var(--font-radio-canada), sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1 1 auto; /* Take up remaining space */
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+/* -------------------- Right Column: Details & Map Styles -------------------- */
+.contact-details-column {
+    flex: 1 1 50%;
+    padding-left: 40px;
+}
+
+.agent-info {
+    font-family: var(--font-cinzel), serif;
+    font-size: 16px;
+    font-weight: 550;
+    margin-bottom: 5px;
+    color: #1e1e1e;
+}
+
+.address-phone {
+    font-family: var(--font-source-sans), sans-serif;
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.office-hours-title {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #1e1e1e;
+}
+
+.hours-time {
+    font-weight: 400;
+}
+
+.appointment-note {
+    font-family: var(--font-source-sans), sans-serif;
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 300px; /* Fixed height for the map container */
+    overflow: hidden;
+    border: 1px solid #ccc; /* Subtle border around the map */
+}
+
+.embedded-map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Remove any border radius on the image itself, the container handles it */
+    border-radius: 0; 
+}
+
+/* -------------------- Responsive Adjustments -------------------- */
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column; /* Stack columns vertically */
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .contact-form-column {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 40px;
+    }
+
+    .contact-details-column {
+        padding-left: 0;
+    }
+
+    .contact-title {
+        font-size: 28px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* -------------------- Footer Styling -------------------- */
+.site-footer {
+    background-color: #1e1e1e; /* Dark background */
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+
+}
+
+.footer-copyright {
+    font-family: var(--font-source-sans), sans-serif;
+    font-size: 14px;
+    color: #ccc; /* Slightly muted white */
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #6699ff; /* Light blue on hover for consistency */
+}
