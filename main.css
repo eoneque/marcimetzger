@@ -27,7 +27,7 @@ body {
     width: 100%;
     padding: 15px 20px;
     display: flex;
-    justify-content: center; /* Center the logo by default */
+    justify-content: center;
     align-items: center;
     z-index: 10; /* Ensure header is on top */
     min-height: 50px; /* Give the blue bar some height */
@@ -109,6 +109,37 @@ body {
 
 /* Adjustments for smaller screens */
 @media (max-width: 768px) {
+    /* -------------------- Header Fix -------------------- */
+    .header {
+        justify-content: space-between; 
+    }
+    
+    .menu-icon {
+   
+        position: static; 
+        flex-shrink: 0; /* Prevent it from shrinking */
+        padding-right:10px;
+
+    }
+
+    .logo-img-container {
+        flex-grow: 1; /* Allow it to take up the space between the icon and the right edge */
+        text-align: center; /* Center the image element inside this container */
+    }
+    
+    .logo-img {
+        /* Keep existing logo styles */
+        max-width: 250px; /* You may want to reduce this on small devices */
+    }
+    
+    /* Create a placeholder element for the right side to ensure the logo stays perfectly centered */
+    .header::after {
+        content: '';
+        width: 30px; /* Match the width of the menu-icon */
+        flex-shrink: 0;
+    }
+    /* -------------------- END Header Fix -------------------- */
+
     .hero-title {
         font-size: 7vw;
     }
@@ -143,27 +174,17 @@ body {
 
 /* -------------------- Left Column: Stats and Image -------------------- */
 .stats-column {
-    flex: 1 1 65%; /* Takes up about 65% of the width on large screens */
-    background-color: #000; /* Fallback */
+    flex: 1 1 60%;
+    background-color: #000;
     position: relative;
     color: white;
-    /* Background Image setup */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/realestate1.png'); /* REPLACE with your kitchen image path */
+    /* REMOVED: Static background-image (JS will handle this) */
     background-size: cover;
-    background-position: center;
-    
-    /* Ensure a minimum height for the column */
     min-height: 500px;
-}
+    /* NEW: Smooth transition for the background image change */
+    background-position: center center;
+    transition: background-image 1.0s ease-in-out;
 
-.stats-content {
-    /* Position the content block near the bottom-left, as seen in the image */
-    position: absolute;
-    bottom: 5%;
-    left: 8%;
-    width: 80%;
-    max-width: 600px; /* Constrain the text block width */
-    padding: 20px;
 }
 
 .gold-separator {
@@ -174,24 +195,49 @@ body {
     margin-bottom: 25px;
 }
 
-.stats-headline {
-    font-family: var(--font-inter), sans-serif;
-    font-size: 2.2vw; /* Responsive font size */
-    font-weight: 700;
-    margin-bottom: 15px;
-    line-height: 1.2;
+.stats-content {
+    /* NEW: Acts as the positioning context for the dots */
+    position: relative; 
+    /* NEW: Ensures the column has height even when slides are absolute */
+    min-height: 400px; 
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
 }
 
-.stats-text {
-    font-family: var(--font-source-sans), sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 25px;
+/* -------------------- Carousel-Specific Styles -------------------- */
+
+.stat-slide {
+    opacity: 1;
+    position: absolute; /* Stack slides on top of each other */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    visibility: hidden;
+    transform: translateX(20px);
+    /* Re-apply the original corner positioning */
+    bottom: 5%; 
+    left: 8%;
+    width: 80%;
+    max-width: 600px; 
+    padding: 0; /* Remove padding as it's handled by the slide container */
+    box-sizing: border-box; 
+}
+
+.stat-slide.active-slide {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 .carousel-dots {
     display: flex;
     gap: 8px;
+    
+    /* Position the dots relative to the .stats-column */
+    position: absolute;
+    bottom: 0%; /* Align with the bottom of the content */
+    left: 8%; /* Align with the left of the content */
+    z-index: 15;
+    margin-top: 1050px; 
 }
 
 .dot {
@@ -264,6 +310,38 @@ body {
 @media (max-width: 1024px) {
     .stats-headline {
         font-size: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-column {
+        min-height: 400px; /* Reduce height slightly for better vertical flow */
+    }
+
+    /* 🚨 FIX 1: Reposition the slides */
+    .stat-slide {
+        /* Use smaller padding/margin on mobile */
+        left: 5%; 
+        right: 5%; 
+        width: 90%; 
+        max-width: 90%;
+        bottom: 70px;
+        position: absolute;
+    }
+
+    .carousel-dots {
+        /* Match the new left margin */
+        left: 5%; 
+        /* Place them just below the slide content */
+        bottom: 15px; 
+        
+        /* CRITICAL: Drastically reduce margin-top on mobile */
+        margin-top: 250px; /* Adjust this value lower than 350px/250px, e.g., 250px is often sufficient for mobile text */
+    }
+    
+    /* 🚨 Optional: Shrink headline font size */
+    .stats-headline {
+        font-size: 6vw; /* Use a relative unit for mobile headlines */
     }
 }
 
@@ -382,80 +460,130 @@ body {
 }
 
 .gallery-section {
-    background-color: white; /* Light background */
-    padding: 80px 20px;
-    text-align: center;
+    position: relative;
+    width: 100%;
+    min-height: 95vh; /* Make the viewer prominent */
+    overflow: hidden; 
+}
+
+/* --- Main Viewer/Background Section --- */
+.gallery-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    background-image: url('images/pahrump.png'); /* Initial image */
+    background-size: cover;
+    background-position: center center;
+    
+    /* Transition for image fade only */
+    transition: background-image 0.5s ease-in-out; 
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gallery-viewer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background 0.3s;
 }
 
 .gallery-title {
-    /* Use the same elegant style as the 'OUR SERVICES' title */
-    font-family: var(--font-cinzel), serif; 
-    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 2.5rem;
+    z-index: 10;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-family: var(--font-cinzel), serif; /* Assuming you have a custom font variable */
     font-weight: 400;
     letter-spacing: 5px;
-    color: #1e1e1e; /* Dark text on light background */
-    margin-bottom: 50px;
 }
 
+/* --- Thumbnail Container (The sliding bar at the bottom) --- */
 .gallery-container {
     display: flex;
-    justify-content: center;
-    gap: 30px; /* Spacing between images */
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 20;
+    
+    background: rgba(0, 77, 153, 0.61); 
+    /* Hide scrollbar for aesthetics */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.gallery-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .gallery-item {
-    flex: 1 1 300px; /* Allows each item to grow/shrink, with a minimum width of 300px */
-    max-width: calc(33.333% - 20px); /* Ensures 3 items per row with spacing */
-    
-    /* Styles for the card look */
-    background-color: white;
-    border-radius: 15px; /* Rounded corners */
-    overflow: hidden; /* Ensures image respects the border-radius */
-    
-    /* Subtle border and shadow to lift the card */
-    border: 1px solid #eee; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-    
-    /* Set an aspect ratio if you want consistent card height, or let the image define it */
+    flex-shrink: 0; /* Prevents squishing */
+    width: 150px; /* Thumbnail width */
+    height: 100px; /* Thumbnail height */
+    margin: 0 5px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.gallery-item:hover, .gallery-item.active {
+    opacity: 1;
+    border-color: #ffffff; /* Gold accent on active/hover */
 }
 
 .gallery-image {
     width: 100%;
     height: 100%;
-    /* Ensures the image fills the space and maintains aspect ratio */
-    object-fit: cover; 
+    object-fit: cover;
     display: block;
 }
 
-/* -------------------- Responsive Adjustments -------------------- */
-@media (max-width: 1024px) {
-    .gallery-container {
-        gap: 20px;
-    }
-    
-    .gallery-item {
-        max-width: calc(50% - 10px); /* 2 images per row on tablets */
-    }
+.gallery-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 30;
+    border-radius: 4px;
 }
+
+/* ==================================================== */
+/* MOBILE RESPONSIVE FIXES */
+/* ==================================================== */
 
 @media (max-width: 600px) {
     .gallery-section {
-        padding: 50px 10px;
-    }
-
-    .gallery-item {
-        max-width: 100%; /* 1 image per row on phones */
+        min-height: 50vh; 
     }
     
     .gallery-title {
-        font-size: 26px;
-        margin-bottom: 30px;
+        font-size: 1.8rem;
+    }
+    
+    .gallery-item {
+        width: 100px; /* Smaller thumbnails on mobile */
+        height: 65px;
     }
 }
-
 /* -------------------- Search/CTA Section Styling (REDONE) -------------------- */
 .search-cta-section {
     width: 100%;
@@ -834,7 +962,7 @@ input[type="number"] {
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
     flex: 0 0 auto; /* Only take necessary width */
     transition: background-color 0.3s;
@@ -850,7 +978,7 @@ input[type="number"] {
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
     flex: 1 1 auto; /* Take up remaining space */
     transition: background-color 0.3s;
@@ -918,7 +1046,6 @@ input[type="number"] {
     .contact-container {
         flex-direction: column; /* Stack columns vertically */
         gap: 40px;
-        padding: 0 20px;
     }
 
     .contact-form-column {
@@ -928,8 +1055,14 @@ input[type="number"] {
         padding-bottom: 40px;
     }
 
+    .contact-section {
+        padding-left: 20px;
+        padding-right: 20px;
+        /* Keep vertical padding from the existing rule (e.g., 80px 50px) */
+    }
     .contact-details-column {
         padding-left: 0;
+        width: 100%; 
     }
 
     .contact-title {
@@ -939,6 +1072,12 @@ input[type="number"] {
     .contact-buttons {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .map-placeholder {
+        width: 100%;
+        /* You can optionally increase the height here if needed for mobile viewing */
+        height: 350px; 
     }
 }
 
@@ -974,3 +1113,111 @@ input[type="number"] {
 .footer-social a:hover {
     color: #6699ff; /* Light blue on hover for consistency */
 }
+
+
+
+/* ======================================= */
+/* 1. BASE SCROLL REVEAL SETUP (CRUCIAL) */
+/* ======================================= */
+
+/* This is the master hidden state for ALL animations. */
+.hidden {
+    opacity: 0 !important;
+    transform: none; 
+    
+    /* Set the default transition for opacity and transform for most elements. */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+    
+    visibility: hidden; 
+}
+
+/* This is the master end state for ALL animations. */
+.show {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible;
+}
+
+
+/* ======================================= */
+/* 2. Custom Animation STARTING States */
+/* ======================================= */
+
+.slide-up {
+    transform: translateY(50px);
+}
+
+/* 3. Slide-In from Left */
+.slide-from-left {
+    transform: translateX(-100px);
+}
+
+/* 4. Slide-In from Right */
+.slide-from-right {
+    transform: translateX(100px);
+}
+
+/* 5. Fade and Scale Up (Zoom Effect) */
+.scale-up {
+    /* Start slightly scaled down */
+    transform: scale(0.95);
+    /* Keep the custom transition here if you want it different from the default */
+    transition: opacity 1.0s ease-out, transform 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 6. 3D Rotate and Fade-In (New Modern Animation) */
+.rotate-in {
+    /* Start rotated away from the viewer */
+    transform: perspective(1000px) rotateX(90deg); 
+    /* Keep the custom transition here if you want it different from the default */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out; 
+}
+
+/* ======================================= */
+/* 3. STAGGERED SERVICES FIX */
+/* ======================================= */
+
+/* **FIX 1:** Move transition to the base class so it's always active */
+.service-item {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.services-list-column .service-item.hidden {
+    /* Set the starting state */
+    opacity: 0;
+    transform: translateX(30px); 
+    
+    /* REMOVE: transition: opacity 0.6s ease-out, transform 0.6s ease-out; */
+    visibility: hidden;
+}
+.services-list-column .service-item.show {
+    /* IMPORTANT: Reset to end state */
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+}
+
+
+.services-list-column .service-item.hidden:nth-child(1) {
+    transition-delay: 0s;
+}
+.services-list-column .service-item.hidden:nth-child(2) {
+    transition-delay: 0.15s; 
+}
+.services-list-column .service-item.hidden:nth-child(3) {
+    transition-delay: 0.3s; 
+}
+/* Keep other styles as you had them */
+.gallery-container .gallery-item.hidden {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98); 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    visibility: hidden;
+}
+.gallery-container .gallery-item.hidden {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98); /* This is the desired transform */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    visibility: hidden;
+}
+

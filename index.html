@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <main class="hero-section">
+    <main class="hero-section hidden slide-up">
         <div class="hero-content">
             <p class="hero-subheading">MARCI METZGER - THE RIDGE REALTY GROUP</p>
             
@@ -34,49 +34,65 @@
         
         <div class="stats-column">
             <div class="stats-content">
+
+                <div class="stat-slide active-slide">
+                    <div class="gold-separator"></div>
+                    <h2 class="stats-headline">Top Residential Sales Last 5 Years</h2>
+                    <p class="stats-text">
+                        We helped nearly 90 clients in 2021, and closed 28.5 million in sales! Our team works hard everyday to grow and learn, so that we may continue to 
+                        excel in our market. Our clients deserve our best, & we want to make sure 
+                        our best is better every year.
+                    </p>
+                </div>
+
+                <div class="stat-slide">
+                    <div class="gold-separator"></div>
+                    <h2 class="stats-headline">Don't Just List it...</h2>
+                    <p class="stats-text">
+                        Get it SOLD! We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home.
+                    </p>
+                </div>
+
+                <div class="stat-slide">
+                    <div class="gold-separator"></div>
+                    <h2 class="stats-headline">Guide to Buyers</h2>
+                    <p class="stats-text">
+                        Nobody knows the market like we do. Enjoy having a pro at your service. Market analysis, upgrades lists, contractors on speed dial, & more!
+                    </p>
+                </div>
                 
-                <div class="gold-separator"></div>
-
-                <h2 class="stats-headline">Top Residential Sales Last 5 Years</h2>
-
-                <p class="stats-text">
-                    We helped nearly 90 clients in 2021, and closed 28.5 million in sales! Our team works hard everyday to grow and learn, so that we may continue to 
-                    excel in our market. Our clients deserve our best, & we want to make sure 
-                    our best is better every year.
-                </p>
-
                 <div class="carousel-dots">
-                    <span class="dot active-dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <span class="dot active-dot" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
                 </div>
             </div>
-            </div>
+        </div>
 
         <div class="agent-column">
-            <div class="agent-info">
+            <div class="agent-info hidden slide-up">
                 <p class="agent-name">MARCI METZGER</p>
                 <p class="agent-phone">206-919-6886</p>
             </div>
             
-            <div class="agent-photo-container">
+            <div class="agent-photo-container hidden slide-up">
                 <img src="images/marcimetzger.png" alt="Marci Metzger Photo" class="agent-photo">
             </div>
         </div>
     </section>
 
     <section class="services-section">
-        <h2 class="section-title">OUR SERVICES</h2>
+        <h2 class="section-title hidden">OUR SERVICES</h2>
         
         <div class="services-container">
             
-            <div class="services-image-column">
+            <div class="services-image-column hidden slide-up">
                 <img src="images/relyonexpert.png" alt="Business handshake over laptop" class="services-image">
             </div>
 
             <div class="services-list-column">
                 
-                <div class="service-item">
+                <div class="service-item hidden">
                     <h3 class="service-title">Real Estate Done Right</h3>
                     <p class="service-description">
                         Nervous about your property adventure? Don't be. Whether you're getting ready to buy or sell your 
@@ -85,7 +101,7 @@
                     </p>
                 </div>
                 
-                <div class="service-item">
+                <div class="service-item hidden">
                     <h3 class="service-title">Commercial & Residential</h3>
                     <p class="service-description">
                         Large or small, condo or mansion, we can find it and get at the price that's right. Fixer-uppers? Luxury? We can 
@@ -94,7 +110,7 @@
                     </p>
                 </div>
                 
-                <div class="service-item">
+                <div class="service-item hidden">
                     <h3 class="service-title">Rely on Expertise</h3>
                     <p class="service-description">
                         If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to 
@@ -106,38 +122,49 @@
             </div>
         </div>
     </section>
-    <section class="gallery-section">
+  <section class="gallery-section">
+    <div class="gallery-viewer" id="mainGalleryViewer">
         <h2 class="gallery-title">PHOTO GALLERY</h2>
-        
-        <div class="gallery-container">
-            
-            <div class="gallery-item">
-                <img src="images/pahrump.png" alt="Aerial view of community and pool" class="gallery-image">
-            </div>
-
-            <div class="gallery-item">
-                <img src="images/pahrump2.png" alt="Interior room with large windows and red chair" class="gallery-image">
-            </div>
-
-            <div class="gallery-item">
-                <img src="images/pahrump3.png" alt="Aerial view of suburban homes" class="gallery-image">
-            </div>
+    </div>
+    
+    <div class="gallery-container hidden slide-up">  
+        <div class="gallery-item" data-index="0">
+            <img src="images/pahrump.png" alt="Aerial view of community and pool" class="gallery-image">
         </div>
-    </section>
+        <div class="gallery-item" data-index="1">
+            <img src="images/pahrump2.png" alt="Interior room with large windows and red chair" class="gallery-image">
+        </div>
+        <div class="gallery-item" data-index="2">
+            <img src="images/pahrump3.png" alt="Aerial view of suburban homes" class="gallery-image">
+        </div>
+        <div class="gallery-item" data-index="3">
+            <img src="images/pahrump4.png" alt="Aerial view of suburban homes" class="gallery-image">
+        </div>
+        <div class="gallery-item" data-index="4">
+            <img src="images/pahrump5.png" alt="Aerial view of suburban homes" class="gallery-image">
+        </div>
+        <div class="gallery-item" data-index="5">
+            <img src="images/pahrump6.png" alt="Aerial view of suburban homes" class="gallery-image">
+        </div>
+        <div class="gallery-item" data-index="6">
+            <img src="images/pahrump7.png" alt="Aerial view of suburban homes" class="gallery-image">
+        </div>
+        </div>
+</section>
     <section class="search-cta-section">
         
         <div class="search-sidebar">
-    <h3 class="sidebar-title">Search Listings</h3>
+    <h3 class="sidebar-title hidden slide-from-left">Search Listings</h3>
     
     <form class="search-form">
         
-        <div class="form-row">
+        <div class="form-row hidden slide-up">
             <div class="form-group">
                 <label for="location">Location</label>
                 <select id="location" name="location">
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group hidden slide-up">
                 <label for="type">Type</label>
                 <select id="type" name="type">
                 </select>
@@ -145,45 +172,58 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group full-width">
+            <div class="form-group full-width  hidden slide-up">
                 <label for="sort">Sort By</label>
                 <select id="sort" name="sort">
+                    <option value="None"></option>
                     <option value="date_desc">Newest</option>
                     <option value="date_desc">Oldest</option>
-                    <option value="price_asc">Price (Low to High)</option>
-                    <option value="price_desc">Price (High to Low)</option>
+                    <option value="least_exp">Least Expensive to Most</option>
+                    <option value="most_exp">Most Expensive to Leastt</option>
+                    <option value="price_asc_bed">Bedrooms (Low to High)</option>
+                    <option value="price_desc_bed">Bedrooms (High to Low)</option>
+                    <option value="price_asc_bath">Bathrooms (Low to High)</option>
+                    <option value="price_desc_bath">Bathrooms (High to Low)</option>
                 </select>
             </div>
-            <div class="form-group small-group">
+            <div class="form-group small-group  hidden slide-up">
                 <label for="bedrooms">Bedrooms</label>
                 <select id="bedrooms" name="bedrooms">
                     <option value="">Any</option>
+                    <option value="Studio">Studio</option>
                     <option value="1">1+</option>
                     <option value="2">2+</option>
                     <option value="3">3+</option>
+                    <option value="4">4+</option>
+                    <option value="5">5+</option>
+                    <option value="6">6+</option>
                 </select>
             </div>
-            <div class="form-group small-group">
+            <div class="form-group small-group hidden slide-up">
                 <label for="baths">Baths</label>
                 <select id="baths" name="baths">
                     <option value="">Any</option>
                     <option value="1">1+</option>
                     <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                    <option value="5">5+</option>
+                    <option value="6">6+</option>
                 </select>
             </div>
         </div>
-        <div class="form-row price-row">
+        <div class="form-row price-row hidden slide-up">
             <div class="form-group">
                 <label for="min-price">Min Price</label>
                 <input type="number" id="min-price" name="min-price">
             </div>
-            <div class="form-group">
+            <div class="form-group hidden slide-up">
                 <label for="max-price">Max Price</label>
                 <input type="number" id="max-price" name="max-price">
             </div>
         </div>
         
-        <button type="submit" class="search-button">SEARCH</button>
+        <button type="submit" class="search-button hidden">SEARCH</button>
     </form>
 </div>
         <div class="cta-background-content">
@@ -206,32 +246,32 @@
         </div>
     </section>
     <section class="contact-section">
-        <h2 class="contact-title">CONTACT OR VISIT</h2>
+        <h2 class="contact-title hidden">CONTACT OR VISIT</h2>
         
         <div class="contact-container">
             
             <div class="contact-form-column">
-                <h3 class="form-heading">SEND MESSAGE</h3>
+                <h3 class="form-heading hidden slide-from-left">SEND MESSAGE</h3>
                 
                 <form class="contact-form">
                     
-                    <div class="contact-group">
+                    <div class="contact-group hidden slide-from-left">
                         <label for="contact-name" class="contact-label">Name</label>
                         <input type="text" id="contact-name" name="name" class="contact-input">
                     </div>
                     
-                    <div class="contact-group">
+                    <div class="contact-group hidden slide-from-left">
                         <label for="contact-email" class="contact-label">Email Address</label>
                         <input type="email" id="contact-email" name="email" class="contact-input">
                     </div>
                     
-                    <div class="contact-group">
+                    <div class="contact-group hidden slide-from-left">
                         <label for="contact-message" class="contact-label">Message</label>
                         <input type="text" id="contact-message" name="message" class="contact-input large-bottom-margin">
                     </div>
                     
-                    <div class="contact-buttons">
-                        <button type="submit" class="contact-search-button">SEARCH</button>
+                    <div class="contact-buttons hidden">
+                        <button type="submit" class="contact-search-button">SEND</button>
                         <a href="https://wa.me/12069196886" target="_blank" class="whatsapp-button">
                             Message us on WhatsApp
                         </a>
@@ -242,7 +282,7 @@
 
             <div class="contact-details-column">
                 <p class="agent-info">MARCI METZGER - THE RIDGE REALTY GROUP</p>
-                <p class="address-phone">3190 HW-160, Suite F, Pahrump, Nevada 89048, United States <br>(206) 919-6886</p>
+                <p class="address-phone">3190 HW-160, Suite F, Pahrump, Nevada 89048, United States (206) 919-6886</p>
                 
                 <h4 class="office-hours-title">OFFICE HOURS <span class="hours-time">08:00 am – 07:00 pm</span></h4>
                 <p class="appointment-note">Appointments outside office hours available upon request. Just call!</p>
